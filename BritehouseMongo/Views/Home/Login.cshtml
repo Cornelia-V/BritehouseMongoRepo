@@ -1,0 +1,85 @@
+﻿@model BritehouseMongo.ViewModel.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+    
+}
+    <head>
+        <title>Modernize an Admin Panel Category Bootstrap Responsive Web Template | Login :: w3layouts</title>
+        <!-- Meta Tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta name="keywords" content="Modernize Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+        <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+        </script>
+        <!-- //Meta Tags -->
+        <!-- Style-sheets -->
+        <!-- Bootstrap Css -->
+        <link href="~/Content/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <!-- Bootstrap Css -->
+        <!-- Common Css -->
+        <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <!--// Common Css -->
+        <!-- Fontawesome Css -->
+        <link href="~/Content/css/fontawesome-all.css" rel="stylesheet">
+        <!--// Fontawesome Css -->
+        <!--// Style-sheets -->
+        <!--web-fonts-->
+        <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <!--//web-fonts-->
+    </head>
+<h2>Login</h2>
+@if (ViewBag.Status == null || !ViewBag.Status)
+{
+    <!--login from here-->
+    <div>@ViewBag.Message</div>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <div class=form-group>
+                <label for="Username">Username: </label>
+                @Html.TextBoxFor(a => a.Username, new { @class = "form-control" })
+            </div>
+            <div class=form-group>
+                <label for="Password">Password: </label>
+                @Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "password" })
+            </div>
+            <div class=form-group>
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Login" class="btn btn-default" />
+                    <a href="@Url.Action("Register","Home")">Register</a>
+                </div>
+            </div>
+   
+            
+        }
+    </div>
+}
+else
+{
+    <!--"FA-->
+    <div>@ViewBag.Message</div>
+    <div>
+        <img src="@ViewBag.BarcodeImageUrl" />
+    </div>
+    <div>
+        Manual Setup Code : @ViewBag.SetupCode
+    </div>
+    <div>
+        @using (Html.BeginForm("Verify2FA", "Home", FormMethod.Post))
+        {
+            <input type="text" name="passcode" />
+            <input type="submit" class="btn btn-success" />
+        }
+    </div>
+
+}

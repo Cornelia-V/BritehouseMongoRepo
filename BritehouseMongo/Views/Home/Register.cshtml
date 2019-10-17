@@ -1,0 +1,89 @@
+﻿@model BritehouseMongo.Models.UserMod
+
+@{
+    ViewBag.Title = "Register";
+}
+    <head>
+        <title>Britehouse ITRW324 Project 3</title>
+        <!-- Meta Tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta name="keywords" content="Modernize Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+        <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+        </script>
+        <!-- //Meta Tags -->
+        <!-- Style-sheets -->
+        <!-- Bootstrap Css -->
+        <link href="~/Content/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <!-- Bootstrap Css -->
+        <!-- Bars Css -->
+        <link rel="stylesheet" href="~/Content/css/bar.css">
+        <!--// Bars Css -->
+        <!-- Calender Css -->
+        <link rel="stylesheet" type="text/css" href="~/Content/css/pignose.calender.css" />
+        <!--// Calender Css -->
+        <!-- Common Css -->
+        <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <!--// Common Css -->
+        <!-- Nav Css -->
+        <link rel="stylesheet" href="~/Content/css/style4.css">
+        <!--// Nav Css -->
+        <!-- Fontawesome Css -->
+        <link href="~/Content/css/fontawesome-all.css" rel="stylesheet">
+        <!--// Fontawesome Css -->
+        <!--// Style-sheets -->
+        <!--web-fonts-->
+        <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <!--//web-fonts-->
+    </head>
+<h2>Register</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4></h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" , type = "password"} })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to Login", "login")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

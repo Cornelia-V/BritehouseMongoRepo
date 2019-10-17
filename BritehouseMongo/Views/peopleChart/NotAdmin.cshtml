@@ -1,0 +1,402 @@
+﻿@model BritehouseMongo.ViewModel.PeopleViewModelChart
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Britehouse ITRW324 Project 3</title>
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Modernize Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta Tags -->
+    <!-- Style-sheets -->
+    <!-- Bootstrap Css -->
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Bootstrap Css -->
+    <!-- Bars Css -->
+    <link rel="stylesheet" href="~/Content/css/bar.css">
+    <!--// Bars Css -->
+    <!-- Calender Css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/pignose.calender.css" />
+    <!--// Calender Css -->
+    <!-- Common Css -->
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--// Common Css -->
+    <!-- Nav Css -->
+    <link rel="stylesheet" href="~/Content/css/style4.css">
+    <!--// Nav Css -->
+    <!-- Fontawesome Css -->
+    <link href="~/Content/css/fontawesome-all.css" rel="stylesheet">
+    <!--// Fontawesome Css -->
+    <!--// Style-sheets -->
+    <!--web-fonts-->
+    <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!--//web-fonts-->
+</head>
+
+<body>
+    <div class="se-pre-con"></div>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h1>
+                    <a href="index.html">Britehouse</a>
+                </h1>
+                <span>M</span>
+            </div>
+            <div class="profile-bg"></div>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="@Url.Action("Index","peopleChart")">
+                        <i class="fas fa-laptop"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="@Url.Action("Login","Home")">
+                        <i class="fas fa-laptop"></i>
+                        Log Out
+                    </a>
+                </li>
+                <li>
+                    <a href="https://app.powerbi.com/view?r=eyJrIjoiYjU4YzY5OTctNTEyYy00NzhiLWFiODktNDhiMWE2ZGVhZTkzIiwidCI6ImEzMTJkZDIwLTFkZmUtNDU0ZC1iNjk2LTYyNTc1Yzc4YjA3ZiIsImMiOjh9">
+                        <i class="fas fa-chart-bar"></i>
+                        Purchases of sub-categories over Time
+                    </a>
+                </li>
+                <li>
+                    <a href="https://app.powerbi.com/view?r=eyJrIjoiMWQ4ZDFlNDItNGUzYy00YTYyLWI4MDctNjFkNjc0Y2QyOTVkIiwidCI6ImEzMTJkZDIwLTFkZmUtNDU0ZC1iNjk2LTYyNTc1Yzc4YjA3ZiIsImMiOjh9">
+                        <i class="fas fa-chart-bar"></i>
+                        Trend between Priority and Product categories
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://app.powerbi.com/view?r=eyJrIjoiZDBjNjk5NGMtNzdiMC00Yzk3LWFlOTctMDhkMzExOTljZjk0IiwidCI6ImEzMTJkZDIwLTFkZmUtNDU0ZC1iNjk2LTYyNTc1Yzc4YjA3ZiIsImMiOjh9">
+                        <i class="far fa-map"></i>
+                        Types of Items Ordered Throughout the years
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <!-- top-bar -->
+            <nav class="navbar navbar-default mb-xl-5 mb-4">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" class="btn">
+                            <div class=form-group>
+                                <div class="col-md-offset-2 col-md-10">
+                                    <a style="color:blue" href="@Url.Action("DisplayAll","People")">Display all People</a>
+                                </div>
+                            </div>
+                        </button>
+                        <button type="button" class="btn">
+                            <div class=form-group>
+                                <div class="col-md-offset-2 col-md-10">
+                                    <a style="color: forestgreen" href="@Url.Action("DisplayReturns","Returns")">Display all Returns</a>
+                                </div>
+                            </div>
+                        </button>
+                        <button type="button" class="btn">
+                            <div class=form-group>
+                                <div class="col-md-offset-2 col-md-10">
+                                    <a style="color: crimson" href="@Url.Action("DisplayOrders","Orders")">Display all Orders</a>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+
+                </div>
+            </nav>
+            <!--// top-bar -->
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Stats -->
+                    <div class="outer-w3-agile col-xl">
+                        <div class="stat-grid p-3 d-flex align-items-center justify-content-between bg-primary">
+                            <div class="s-l">
+                                <h5>People</h5>
+                                <p class="paragraph-agileits-w3layouts text-white">Number of people in the People database</p>
+                            </div>
+                            <div class="s-r">
+                                <h6>
+                                    @Model.cp
+                                    <i class="fas fa-users"></i>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-success">
+                            <div class="s-l">
+                                <h5>Returns</h5>
+                                <p class="paragraph-agileits-w3layouts">Number of Order ID's that have been returned</p>
+                            </div>
+                            <div class="s-r">
+                                <h6>
+                                    1080
+                                    <i class="far fa-tasks"></i>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-danger">
+                            <div class="s-l">
+                                <h5>Orders</h5>
+                                <p class="paragraph-agileits-w3layouts">Total number of Orders made</p>
+                            </div>
+                            <div class="s-r">
+                                <h6>
+                                    5129
+                                    <i class="fas fa-edit"></i>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-warning">
+                            <div class="s-l">
+                                <h5>Regions</h5>
+                                <p class="paragraph-agileits-w3layouts">Total amount of Regions</p>
+                            </div>
+                            <div class="s-r">
+                                <h6>
+                                    23
+                                    <i class="fas fa-tasks"></i>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// Stats -->
+                    <!-- Pie-chart -->
+                    <div class="outer-w3-agile col-xl ml-xl-3 mt-xl-0 mt-3">
+                        <h4 class="tittle-w3-agileits mb-4">Pie Chart</h4>
+                        <div id="chartdiv"></div>
+                    </div>
+                    <!--// Pie-chart -->
+                </div>
+            </div>
+            
+            <!--// Bar-Chart -->
+            <!--// Bar-Chart --a area-"" asp-controller="PeopleController" asp-action="DisplayAll">People</a>
+            !--// Bar-Chart -->
+        </div>
+    </div>
+
+
+    <!-- Required common Js -->
+    <script src='~/Content/js/jquery-2.2.3.min.js'></script>
+    <!-- //Required common Js -->
+    <!-- loading-gif Js -->
+    <script src="~/Content/js/modernizr.js"></script>
+    <script>
+        //paste this code under head tag or in a seperate js file.
+        // Wait for window load
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
+    <!--// loading-gif Js -->
+    <!-- Sidebar-nav Js -->
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <!--// Sidebar-nav Js -->
+    <!-- Graph -->
+    <script src="~/Content/js/SimpleChart.js"></script>
+    <script>
+        var graphdata4 = {
+            linecolor: "Random",
+            title: "Returns in Regions",
+            values: [{
+                    X: "Africa",
+                    Y: @Model.AfricaR
+                },
+                {
+                    X: "America",
+                    Y: @Model.USA_count
+                },
+                {
+                    X: "Asia",
+                    Y: @Model.AsiaR
+                },
+                {
+                    X: "Canada",
+                    Y: @Model.CanadaR
+                },
+                {
+                    X: "Caribbean",
+                    Y: @Model.CaribbeanR
+                },
+                {
+                    X: "Europe",
+                    Y: @Model.EuropeR
+                },
+                {
+                    X: "Oceana",
+                    Y: @Model.OceaniaR
+                }
+            ]
+        };
+        $(function () {
+            $("#Hybridgraph").SimpleChart({
+                ChartType: "Hybrid",
+                toolwidth: "50",
+                toolheight: "25",
+                axiscolor: "#E6E6E6",
+                textcolor: "#6E6E6E",
+                showlegends: false,
+                data: [graphdata4],
+                legendsize: "140",
+                legendposition: 'bottom',
+                xaxislabel: 'Regions',
+                title: 'Overall Returns',
+                yaxislabel: 'Amount returns'
+            });
+        });
+    </script>
+    <!--// Graph -->
+    <!-- Bar-chart -->
+    <script src="~/Content/js/rumcaJS.js"></script>
+    <script src="~/Content/js/example.js"></script>
+    <!--// Bar-chart -->
+    <!-- Calender -->
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/pignose.calender.js"></script>
+    <script>
+        //<![CDATA[
+        $(function () {
+            $('.calender').pignoseCalender({
+                select: function (date, obj) {
+                    obj.calender.parent().next().show().text('You selected ' +
+                        (date[0] === null ? 'null' : date[0].format('YYYY-MM-DD')) +
+                        '.');
+                }
+            });
+
+            $('.multi-select-calender').pignoseCalender({
+                multiple: true,
+                select: function (date, obj) {
+                    obj.calender.parent().next().show().text('You selected ' +
+                        (date[0] === null ? 'null' : date[0].format('YYYY-MM-DD')) +
+                        '~' +
+                        (date[1] === null ? 'null' : date[1].format('YYYY-MM-DD')) +
+                        '.');
+                }
+            });
+        });
+        //]]>
+    </script>
+    <!--// Calender -->
+    <!-- profile-widget-dropdown js-->
+    <script src="~/Content/js/script.js"></script>
+    <!--// profile-widget-dropdown js-->
+    <!-- Count-down -->
+    <script src="~/Content/js/simplyCountdown.js"></script>
+    <link href="~/Content/css/simplyCountdown.css" rel='stylesheet' type='text/css' />
+    <script>
+        var d = new Date();
+        simplyCountdown('simply-countdown-custom', {
+            year: d.getFullYear(),
+            month: d.getMonth() + 2,
+            day: 25
+        });
+    </script>
+    <!--// Count-down -->
+    <!-- pie-chart -->
+    <script src='/Content/js/amcharts.js'></script>
+    <script>
+        var chart;
+        var legend;
+
+        var chartData = [{
+                country: "Africa",
+                value: @Model.Africa_count
+            },
+            {
+                country: "Caribbean",
+                value: @Model.Canada_count
+            },
+            {
+                country: "Canada",
+                value: @Model.Canada_count
+            },
+            {
+                country: "Asia",
+                value: @Model.Asia_count
+            },
+            {
+                country: "America",
+                value: @Model.USA_count
+            },
+             {
+                country: "Oceania",
+                value: @Model.Oceania_count
+            },
+            {
+                country: "Europe",
+                value: @Model.Europe_count
+            }
+        ];
+
+        AmCharts.ready(function () {
+            // PIE CHART
+            chart = new AmCharts.AmPieChart();
+            chart.dataProvider = chartData;
+            chart.titleField = "country";
+            chart.valueField = "value";
+            chart.outlineColor = "";
+            chart.outlineAlpha = 0.8;
+            chart.outlineThickness = 2;
+            // this makes the chart 3D
+            chart.depth3D = 20;
+            chart.angle = 30;
+
+            // WRITE
+            chart.write("chartdiv");
+        });
+    </script>
+    <!--// pie-chart -->
+    <!-- dropdown nav -->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- //dropdown nav -->
+    <!-- Js for bootstrap working-->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- //Js for bootstrap working -->
+
+</body>
+
+</html>

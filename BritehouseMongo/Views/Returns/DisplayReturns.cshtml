@@ -1,0 +1,82 @@
+﻿@model IEnumerable<BritehouseMongo.DomainLogic.ReturnsMod>
+
+    <head>
+        <title>Britehouse ITRW324 Project 3</title>
+        <!-- Meta Tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta name="keywords" content="Modernize Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+        <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+        </script>
+        <!-- //Meta Tags -->
+        <!-- Style-sheets -->
+        <!-- Bootstrap Css -->
+        <link href="~/Content/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <!-- Bootstrap Css -->
+        <!-- Bars Css -->
+        <link rel="stylesheet" href="~/Content/css/bar.css">
+        <!--// Bars Css -->
+        <!-- Calender Css -->
+        <link rel="stylesheet" type="text/css" href="~/Content/css/pignose.calender.css" />
+        <!--// Calender Css -->
+        <!-- Common Css -->
+        <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <!--// Common Css -->
+        <!-- Nav Css -->
+        <link rel="stylesheet" href="~/Content/css/style4.css">
+        <!--// Nav Css -->
+        <!-- Fontawesome Css -->
+        <link href="~/Content/css/fontawesome-all.css" rel="stylesheet">
+        <!--// Fontawesome Css -->
+        <!--// Style-sheets -->
+        <!--web-fonts-->
+        <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <!--//web-fonts-->
+    </head>
+    <h2>Returns</h2>
+    <button type="button" class="btn">
+        <div class=form-group>
+            <div class="col-md-offset-2 col-md-10">
+                <a href="@Url.Action("Index","peopleChart")">Back to Dashboard</a>
+            </div>
+        </div>
+    </button>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Returned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Region)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Returned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Region)
+        </td>
+        
+    </tr>
+}
+
+</table>

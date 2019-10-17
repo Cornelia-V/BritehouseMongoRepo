@@ -1,0 +1,30 @@
+﻿@(
+    ViewBag.Title = "People Living in different Regions"
+)
+@Html.DevExpress().Chart(settings => {
+    settings.Name = "chart";
+    settings.Width = 640;
+    settings.Height = 360;
+    Settings.PaletteName = "Ofice 2013";
+    settings.Series.Template(t => {
+        t.setDataMember("Region", "Person");
+        t.Views().LineSeriesView(1 => 1.MarketVisibility = DefaultBoolean.True)
+    });
+settings.XYDiagram( d => {
+    d.AxisX.Title.Visibility = DefaultBoolean.True;
+    d.AxisX.Title.Text = "Person";
+    d.AxisX.NumericScaleOptions.MeasureUnit.Ones;
+    d.AxisX.NumericScaleOptions.Offset = 1;
+
+    d.AxisY.Title.Visibility = DefaultBoolean.True;
+    d.AxisY.Title.Text = "Person";
+});
+    settings.Titles.Add(t => t.Text = "Amount of people in different regions.");
+    settings.Legends.Default(d => {
+        d.AllignmntHorizontal = LegendAllignMentHorizontal.Center;
+        d.AllignmntHorizontal = LegendAllignMentVertical.TopOutside;
+        d.Direction = LegendDirection.LeftToRight;
+});
+
+}).Bind(PeopleMod1, "Region").GetHtml();
+
